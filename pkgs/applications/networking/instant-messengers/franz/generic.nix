@@ -91,7 +91,7 @@ in stdenv.mkDerivation (rec {
     wrapProgram $out/opt/${name}/${pname} \
       --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath runtimeDependencies}" \
       --suffix PATH : ${xdg-utils}/bin \
-      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=WaylandWindowDecorations}}" \
-      "''${gappsWrapperArgs[@]}"
+      "''${gappsWrapperArgs[@]}" \
+      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=WaylandWindowDecorations}}"
   '';
 } // cleanedArgs)
